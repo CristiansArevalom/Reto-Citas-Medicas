@@ -1,0 +1,19 @@
+package com.citasmedicas.citasmedicas.model.entity;
+
+public enum EnumEspecialidad {
+    MEDICINA_GENERAL("Medicina General"),
+    CARDIOLOGIA("cardiologia"),
+    MEDICINA_INTERNA("medicina interna"),
+    DETMATOLOGIA("Dermatologia"),
+    REHABILITACION_FISICA("Rehabilitacion fisica"),
+    PSICOLOGIA("psicologia"),
+    ODONTOLOGIA("odontologia"),
+    RADIOLOGIA("Radiologia");
+
+    private String descripcion;
+
+    private EnumEspecialidad( String descripcion){
+        this.descripcion=descripcion;
+    }
+
+}

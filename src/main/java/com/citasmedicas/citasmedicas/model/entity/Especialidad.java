@@ -2,6 +2,8 @@ package com.citasmedicas.citasmedicas.model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,9 +16,10 @@ public class Especialidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String nombre;
+    @Enumerated(EnumType.STRING)
+    private EnumEspecialidad nombre; //los datos los debe traer de un ENUM 
     @Column(nullable = false)
-    private String descripcion;
+    private String descripcion;//los datos los debe traer de un ENUM 
 
     public Especialidad() {
     }
