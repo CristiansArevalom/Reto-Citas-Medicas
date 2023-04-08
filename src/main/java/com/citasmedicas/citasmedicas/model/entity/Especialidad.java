@@ -24,7 +24,7 @@ public class Especialidad {
     public Especialidad() {
     }
 
-    public Especialidad(Long id, String nombre, String descripcion) {
+    public Especialidad(Long id, EnumEspecialidad nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -38,13 +38,7 @@ public class Especialidad {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public String getDescripcion() {
         return descripcion;

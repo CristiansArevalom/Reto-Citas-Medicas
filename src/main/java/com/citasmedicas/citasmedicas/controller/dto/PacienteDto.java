@@ -1,45 +1,23 @@
-package com.citasmedicas.citasmedicas.model.entity;
+package com.citasmedicas.citasmedicas.controller.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name="pacientes")
-public class Paciente {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
-    @Column(nullable = false)
+public class PacienteDto {
     private String nombre;
-    @Column(nullable = false)
     private String apellido;
-    @Column(nullable = false)
     private Integer cedula;
-    @Column(nullable = false,unique = true)
     private String edad; //es porque el front no pide fecha nacimiento
-    @Column(nullable = false)
     private String telefono;
-
-    public Paciente() {
+    
+    public PacienteDto() {
     }
-    public Paciente(long id, String nombre, String apellido, Integer cedula, String edad, String telefono) {
-        Id = id;
+    
+    public PacienteDto(String nombre, String apellido, Integer cedula, String edad, String telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.edad = edad;
         this.telefono = telefono;
     }
-    public long getId() {
-        return Id;
-    }
-    public void setId(long id) {
-        Id = id;
-    }
+
     public String getNombre() {
         return nombre;
     }
@@ -70,7 +48,4 @@ public class Paciente {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
-    
-    
 }
