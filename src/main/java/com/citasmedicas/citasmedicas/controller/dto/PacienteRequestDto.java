@@ -1,23 +1,18 @@
 package com.citasmedicas.citasmedicas.controller.dto;
 
-public class PacienteDto {
+public class PacienteRequestDto {
     private String nombre;
     private String apellido;
     private Integer cedula;
     private String edad; //es porque el front no pide fecha nacimiento
     private String telefono;
-    
-    public PacienteDto() {
-    }
-    
-    public PacienteDto(String nombre, String apellido, Integer cedula, String edad, String telefono) {
+    public PacienteRequestDto(String nombre, String apellido, Integer cedula, String edad, String telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.edad = edad;
         this.telefono = telefono;
     }
-
     public String getNombre() {
         return nombre;
     }
