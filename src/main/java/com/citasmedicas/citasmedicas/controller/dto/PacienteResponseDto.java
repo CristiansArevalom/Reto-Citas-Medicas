@@ -1,6 +1,8 @@
 package com.citasmedicas.citasmedicas.controller.dto;
 
 public class PacienteResponseDto {
+    private Long id;
+
     private String nombre;
     private String apellido;
     private Integer cedula;
@@ -10,14 +12,21 @@ public class PacienteResponseDto {
     public PacienteResponseDto() {
     }
     
-    public PacienteResponseDto(String nombre, String apellido, Integer cedula, String edad, String telefono) {
+    public PacienteResponseDto(Long id,String nombre, String apellido, Integer cedula, String edad, String telefono) {
+        this.id=id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.edad = edad;
         this.telefono = telefono;
     }
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getNombre() {
         return nombre;
     }

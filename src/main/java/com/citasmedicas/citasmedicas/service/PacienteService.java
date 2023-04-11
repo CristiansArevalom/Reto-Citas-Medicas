@@ -10,6 +10,7 @@ public interface PacienteService {
     List<PacienteResponseDto> getPacientes();
     void createPaciente(PacienteRequestDto paciente);
     void updatePaciente(PacienteRequestDto paciente);
-    void deletePaciente(PacienteRequestDto paciente);
+    void deletePaciente(Long id);
+    PacienteResponseDto getPacienteById(Long Id);
 
 }
