@@ -17,17 +17,17 @@ public class Especialidad {
     private Long id;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private EnumEspecialidad nombre; //los datos los debe traer de un ENUM 
+    private EnumEspecialidad enumEspecialidad; //los datos los debe traer de un ENUM 
     @Column(nullable = false)
     private String descripcion;//los datos los debe traer de un ENUM 
 
     public Especialidad() {
     }
 
-    public Especialidad(Long id, EnumEspecialidad nombre, String descripcion) {
+    public Especialidad(Long id, EnumEspecialidad nombreEnumEspecialidad) {
         this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
+        this.enumEspecialidad = nombreEnumEspecialidad;
+        this.descripcion = nombreEnumEspecialidad.getDescripcion() ;
     }
 
     public Long getId() {
@@ -38,14 +38,17 @@ public class Especialidad {
         this.id = id;
     }
 
-
+    public String getNombre(){
+        return enumEspecialidad.getNombreEnum();
+    }
 
     public String getDescripcion() {
-        return descripcion;
+        return enumEspecialidad.getDescripcion();
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+        this.enumEspecialidad.setDescripcion(descripcion);
     }
 
 }
