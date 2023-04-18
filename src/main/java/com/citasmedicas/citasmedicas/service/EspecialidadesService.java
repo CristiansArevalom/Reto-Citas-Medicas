@@ -8,6 +8,6 @@ public interface EspecialidadesService {
     void fillEspecialidades();
     List<EspecialidadDto> getEspecialidades();
     EspecialidadDto getEspecialidadByNombre(String nombre);
-    EspecialidadDto getEspecialidadById(String nombre);
+    EspecialidadDto getEspecialidadById(Long id);
 
 }

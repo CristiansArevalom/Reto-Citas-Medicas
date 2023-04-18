@@ -3,6 +3,7 @@ package com.citasmedicas.citasmedicas.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.citasmedicas.citasmedicas.controller.dto.EspecialidadDto;
@@ -19,6 +20,14 @@ public class EspecialidadRestController {
     public List<EspecialidadDto> getEspecialidades(){
         return especialidadesService.getEspecialidades();
     }
-    
+    @GetMapping("api/especialidades/{id}")
+    public EspecialidadDto getEspecialidadById(@PathVariable("id")Long id){
+        return especialidadesService.getEspecialidadById(id);
+    }
+    @GetMapping("api/especialidades/byNombre/{nombre}")
+    public EspecialidadDto getEspecialidadByNombre(@PathVariable("nombre")String nombre){
+        return especialidadesService.getEspecialidadByNombre(nombre);
+
+    }
 
 }
