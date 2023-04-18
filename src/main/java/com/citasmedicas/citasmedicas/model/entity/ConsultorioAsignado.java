@@ -27,6 +27,10 @@ public class ConsultorioAsignado {
     @ManyToOne
     @JoinColumn(name="id_consultorio",foreignKey = @ForeignKey(name="CONSULT_ASIG_ID_CONSULTORIO_FK"))
     private Consultorio consultorio;
+    @ManyToOne
+    @JoinColumn(name="id_cita_medica",foreignKey = @ForeignKey(name="CONSULT_ASIG_ID_CITAMEDICA_FK"))
+    private CitaMedica citaMedica;
+    
     public ConsultorioAsignado() {
     }
 

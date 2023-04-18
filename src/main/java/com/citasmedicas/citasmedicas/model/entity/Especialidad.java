@@ -8,7 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
+//https://www.baeldung.com/jpa-persisting-enums-in-jpa
+//https://www.oscarblancarteblog.com/2016/11/14/mapeo-enumeraciones-enumerated/
 @Entity
 @Table(name = "Especialidades")
 public class Especialidad {
@@ -17,7 +18,7 @@ public class Especialidad {
     private Long id;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private EnumEspecialidad enumEspecialidad; //los datos los debe traer de un ENUM 
+    private EnumEspecialidad nombre; //los datos los debe traer de un ENUM 
     @Column(nullable = false)
     private String descripcion;//los datos los debe traer de un ENUM 
 
@@ -26,7 +27,7 @@ public class Especialidad {
 
     public Especialidad(Long id, EnumEspecialidad nombreEnumEspecialidad) {
         this.id = id;
-        this.enumEspecialidad = nombreEnumEspecialidad;
+        this.nombre = nombreEnumEspecialidad;
         this.descripcion = nombreEnumEspecialidad.getDescripcion() ;
     }
 
@@ -39,16 +40,16 @@ public class Especialidad {
     }
 
     public String getNombre(){
-        return enumEspecialidad.getNombreEnum();
+        return nombre.getNombreEnum();
     }
 
     public String getDescripcion() {
-        return enumEspecialidad.getDescripcion();
+        return nombre.getDescripcion();
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-        this.enumEspecialidad.setDescripcion(descripcion);
+        this.nombre.setDescripcion(descripcion);
     }
 
 }
