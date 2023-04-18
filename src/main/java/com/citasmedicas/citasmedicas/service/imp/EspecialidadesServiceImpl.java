@@ -24,11 +24,10 @@ public class EspecialidadesServiceImpl implements EspecialidadesService {
     public EspecialidadesServiceImpl (EspecialidadRepository especialidadRepository){
         this.especialidadRepository=especialidadRepository;
     }
-    @PostConstruct
+    @PostConstruct//se ejecuta apenas inicia el servidor
     @Override
     public void fillEspecialidades() {
         // LLENANDO AUTOMATICAMENTE LA TABLA ESPECIALIDAD
-        
         try {
             //Si no existe la especialidad, entonces insertela, si ya existe, no.
             List<Especialidad> especialidades = especialidadRepository.findAll();
