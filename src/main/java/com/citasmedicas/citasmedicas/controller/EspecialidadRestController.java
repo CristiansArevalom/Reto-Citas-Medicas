@@ -27,7 +27,10 @@ public class EspecialidadRestController {
     @GetMapping("api/especialidades/byNombre/{nombre}")
     public EspecialidadDto getEspecialidadByNombre(@PathVariable("nombre")String nombre){
         return especialidadesService.getEspecialidadByNombre(nombre);
-
     }
-
+    /*funciona como select * from especialidades where nombre like '%MEDICINA%'; se suspende hasta ver como hacerlo
+    @GetMapping("api/especialidades/LikeNombre/{nombre}")
+    public List<EspecialidadDto> getEspecialidadesByNombre(@PathVariable("nombre")String nombre){
+        return especialidadesService.getEspecialidadesByNombre(nombre);
+    } */
 }

@@ -8,6 +8,7 @@ public interface EspecialidadesService {
     void fillEspecialidades();
     List<EspecialidadDto> getEspecialidades();
     EspecialidadDto getEspecialidadByNombre(String nombre);
+    List<EspecialidadDto>getEspecialidadesByNombre(String nombre);//va a funcionar como un linke trae las especialidades que mas coincidan,se suspende
     EspecialidadDto getEspecialidadById(Long id);
 
 }
