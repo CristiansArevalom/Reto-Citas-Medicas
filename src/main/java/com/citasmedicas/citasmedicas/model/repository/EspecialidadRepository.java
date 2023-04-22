@@ -13,9 +13,12 @@ public interface EspecialidadRepository extends JpaRepository<Especialidad,Long>
         //solo podra buscar especialidades
     List<Especialidad> findAll();
     Optional <Especialidad> findByNombre(EnumEspecialidad nombre);
-    Optional<Especialidad> findById(Long id);
-    List<Especialidad> findByNombreContaining(EnumEspecialidad nombre); //BUSQUEDA LIKE %MEDICINA%
     
+    //@Query("SELECT esp FROM Especialidad espWHERE esp.nombre:nombre")
+    //Optional <Especialidad> findByExactNombre(@Param("nombre")String nombre);
+    Optional<Especialidad> findById(Long id);
+
+    List<Especialidad> findByNombreContaining(EnumEspecialidad nombre); //BUSQUEDA LIKE %MEDICINA%
     @Query("SELECT e FROM Especialidad e WHERE e.nombre LIKE %:nombre%")
     List<Especialidad> findByNombreLike(@Param("nombre") String nombre);
 

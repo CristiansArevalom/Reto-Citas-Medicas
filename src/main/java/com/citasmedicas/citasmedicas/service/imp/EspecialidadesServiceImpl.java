@@ -19,7 +19,7 @@ import jakarta.annotation.PostConstruct;
 
 @Service
 public class EspecialidadesServiceImpl implements EspecialidadesService {
-
+    
     private final EspecialidadRepository especialidadRepository;
 
     public EspecialidadesServiceImpl(EspecialidadRepository especialidadRepository) {
@@ -86,6 +86,7 @@ public class EspecialidadesServiceImpl implements EspecialidadesService {
         }
     }
 
+    
     @Override
     public EspecialidadDto getEspecialidadById(Long id) {
         Optional<Especialidad> especialidad = especialidadRepository.findById(id);

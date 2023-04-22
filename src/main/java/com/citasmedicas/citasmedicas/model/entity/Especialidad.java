@@ -31,6 +31,7 @@ public class Especialidad {
         this.descripcion = nombreEnumEspecialidad.getDescripcion() ;
     }
 
+
     public Long getId() {
         return id;
     }
@@ -51,5 +52,6 @@ public class Especialidad {
         this.descripcion = descripcion;
         this.nombre.setDescripcion(descripcion);
     }
+
 
 }
