@@ -17,9 +17,9 @@ public class Paciente {
     private String nombre;
     @Column(nullable = false)
     private String apellido;
-    @Column(nullable = false)
-    private Integer cedula;
     @Column(nullable = false,unique = true)
+    private Integer cedula;
+    @Column(nullable = false)
     private String edad; //es porque el front no pide fecha nacimiento
     @Column(nullable = false)
     private String telefono;
