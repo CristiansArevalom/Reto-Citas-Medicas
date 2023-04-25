@@ -72,6 +72,50 @@ public class Consultorio {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((ciudad == null) ? 0 : ciudad.hashCode());
+        result = prime * result + ((direccion == null) ? 0 : direccion.hashCode());
+        result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+        result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Consultorio other = (Consultorio) obj;
+        if (ciudad == null) {
+            if (other.ciudad != null)
+                return false;
+        } else if (!ciudad.equals(other.ciudad))
+            return false;
+        if (direccion == null) {
+            if (other.direccion != null)
+                return false;
+        } else if (!direccion.equals(other.direccion))
+            return false;
+        if (numero == null) {
+            if (other.numero != null)
+                return false;
+        } else if (!numero.equals(other.numero))
+            return false;
+        if (descripcion == null) {
+            if (other.descripcion != null)
+                return false;
+        } else if (!descripcion.equals(other.descripcion))
+            return false;
+        return true;
+    }
     
 
 
