@@ -12,6 +12,7 @@ public interface ConsultorioRepository extends JpaRepository<Consultorio,Long> {
     List<Consultorio> findAll();
     Optional<Consultorio> findById(Long id);
     List<Consultorio> findByDireccion(String direccion);
+    List<Consultorio> findByCiudadAndDescripcionAndDireccionAndNumero(String ciudad,String descripcion,String direccion,Integer numero);
 
 
     
