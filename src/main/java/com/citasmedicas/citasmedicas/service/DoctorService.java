@@ -19,7 +19,8 @@ public interface DoctorService {
     void deleteDoctor(Long id);
     DoctorResponseDto getDoctoresById(Long id);
     DoctorResponseDto getDoctoresByEspecialidad(EspecialidadDto especialidad); //ver como hacerlo
-    //ASIGNAR CONSULTORIOw
-
+    
+    //PDT ASIGNAR CONSULTORIO//OPCION LLAMAR AL SERVICIO DE 
+    //recibe numero consultorio, hora y el doctor
 
 }

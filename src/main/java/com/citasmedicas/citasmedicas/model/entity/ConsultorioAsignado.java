@@ -34,6 +34,64 @@ public class ConsultorioAsignado {
     public ConsultorioAsignado() {
     }
 
+    public ConsultorioAsignado(Long id, LocalDateTime inicioReserva, LocalDateTime finReserva, Doctor doctor,
+            Consultorio consultorio, CitaMedica citaMedica) {
+        this.id = id;
+        this.inicioReserva = inicioReserva;
+        this.finReserva = finReserva;
+        this.doctor = doctor;
+        this.consultorio = consultorio;
+        this.citaMedica = citaMedica;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getInicioReserva() {
+        return inicioReserva;
+    }
+
+    public void setInicioReserva(LocalDateTime inicioReserva) {
+        this.inicioReserva = inicioReserva;
+    }
+
+    public LocalDateTime getFinReserva() {
+        return finReserva;
+    }
+
+    public void setFinReserva(LocalDateTime finReserva) {
+        this.finReserva = finReserva;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public Consultorio getConsultorio() {
+        return consultorio;
+    }
+
+    public void setConsultorio(Consultorio consultorio) {
+        this.consultorio = consultorio;
+    }
+
+    public CitaMedica getCitaMedica() {
+        return citaMedica;
+    }
+
+    public void setCitaMedica(CitaMedica citaMedica) {
+        this.citaMedica = citaMedica;
+    }
+
     //private Consultorio consultorio;
 
 
