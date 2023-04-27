@@ -14,6 +14,7 @@ public interface ConsultorioAsignadoRepository extends JpaRepository<Consultorio
 
     //consultar consultorios asignados (traer doctor, especialidad y detalles del consultorio)
     List<ConsultorioAsignado> findAll();
+    List<ConsultorioAsignado> findAllByConsultorioId(Long id);
     /*
     @Query("SELECT conAsign FROM ConsultorioAsignado conAsign"
     +"INNER JOIN Doctor doc ON conAsign.Doctor = doc")

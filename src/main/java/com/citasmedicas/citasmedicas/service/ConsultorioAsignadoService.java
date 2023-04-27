@@ -17,6 +17,6 @@ public interface ConsultorioAsignadoService {
     //ver todos los detalles asignados de un consultorio
     ConsultorioAsignadoResponseDto getConsultorioAsignadoById(Long id);    
     //ConsultorioAsignadoResponseDto getConsultorioAsignadoByDoctor(Long id);    ver coo hacerlo
-    //ConsultorioAsignadoResponseDto getConsultorioAsignadoByConsultorio(Long id); ver como hacerlo
+    List<ConsultorioAsignadoResponseDto> getConsultorioAsignadoByConsultorio(Long id); //ver como hacerlo
 
 }
