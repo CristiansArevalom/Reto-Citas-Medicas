@@ -1,5 +1,6 @@
 package com.citasmedicas.citasmedicas.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.citasmedicas.citasmedicas.controller.dto.ConsultorioAsignadoRequestDto;
@@ -16,7 +17,7 @@ public interface ConsultorioAsignadoService {
     void deleteConsultorioAsignado(Long id);
     //ver todos los detalles asignados de un consultorio
     ConsultorioAsignadoResponseDto getConsultorioAsignadoById(Long id);    
-    //ConsultorioAsignadoResponseDto getConsultorioAsignadoByDoctor(Long id);    ver coo hacerlo
-    List<ConsultorioAsignadoResponseDto> getConsultorioAsignadoByConsultorio(Long id); //ver como hacerlo
+    List<ConsultorioAsignadoResponseDto> getConsultorioAsignadoByConsultorio(Long id);
+    List<ConsultorioAsignadoResponseDto> findAllByBetweenAsignedDates(LocalDateTime fechaInicio,LocalDateTime fechaFin); //ver como hacerlo
 
 }

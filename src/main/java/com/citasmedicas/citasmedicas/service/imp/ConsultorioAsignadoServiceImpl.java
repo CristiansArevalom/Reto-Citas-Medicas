@@ -1,5 +1,6 @@
 package com.citasmedicas.citasmedicas.service.imp;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collector;
@@ -11,20 +12,29 @@ import org.springframework.stereotype.Service;
 import com.citasmedicas.citasmedicas.controller.dto.ConsultorioAsignadoRequestDto;
 import com.citasmedicas.citasmedicas.controller.dto.ConsultorioAsignadoResponseDto;
 import com.citasmedicas.citasmedicas.controller.dto.ConsultorioDto;
+import com.citasmedicas.citasmedicas.controller.dto.DoctorResponseDto;
 import com.citasmedicas.citasmedicas.exceptions.ConsultorioDoesntExistException;
+import com.citasmedicas.citasmedicas.exceptions.ConsultorioReservadoAlreadyExistException;
+import com.citasmedicas.citasmedicas.exceptions.DoctorDoesntExistExceptions;
 import com.citasmedicas.citasmedicas.model.entity.Consultorio;
 import com.citasmedicas.citasmedicas.model.entity.ConsultorioAsignado;
+import com.citasmedicas.citasmedicas.model.entity.Doctor;
+import com.citasmedicas.citasmedicas.model.entity.EnumEspecialidad;
+import com.citasmedicas.citasmedicas.model.entity.Especialidad;
 import com.citasmedicas.citasmedicas.model.repository.ConsultorioAsignadoRepository;
 import com.citasmedicas.citasmedicas.service.ConsultorioAsignadoService;
 import com.citasmedicas.citasmedicas.service.ConsultorioService;
+import com.citasmedicas.citasmedicas.service.DoctorService;
+import com.citasmedicas.citasmedicas.service.EspecialidadesService;
 @Service
 public class ConsultorioAsignadoServiceImpl implements ConsultorioAsignadoService {
 
     private final ConsultorioAsignadoRepository consultorioAsignadoRepository;
     @Autowired
     private ConsultorioService consultorioService;
-    
-
+    private DoctorService doctorService;
+    private EspecialidadesService especialidadService;
+//PREGUNTAR, CASO LLAMAR SERVIICOP DE DOCTOR O LLAMO DIRECTAMENTE EL REPOSITORY, DEBO CREAR UN OBJETO DE TIPO DOCTOR
 
     public ConsultorioAsignadoServiceImpl(ConsultorioAsignadoRepository consultorioAsignadoRepository) {
         this.consultorioAsignadoRepository = consultorioAsignadoRepository;
@@ -50,10 +60,24 @@ public class ConsultorioAsignadoServiceImpl implements ConsultorioAsignadoServic
     public void createConsultorioAsignado(ConsultorioAsignadoRequestDto consultorioAsignadoRequestDto) {
         try {
             //validar si el consultorio en la fecha de reserva que entran ya existe
+            ConsultorioDto consultDto=consultorioService.getConsultorioById(consultorioAsignadoRequestDto.getId_consultorio());
+            DoctorResponseDto doctorDto=doctorService.getDoctoresById(consultorioAsignadoRequestDto.getId_doctor());
+            List<ConsultorioAsignado> consultAsig = consultorioAsignadoRepository.findAllByInicioReservaLessThanEqualAndFinReservaGreaterThanEqual(consultorioAsignadoRequestDto.getInicioReserva(), consultorioAsignadoRequestDto.getFinReserva());
+            if(consultAsig.size()>0){
+                throw new ConsultorioReservadoAlreadyExistException("No se puede reservar, ya existe una reserva en ese rango de fechas");
+            }
+            ConsultorioAsignado consultAsigDb= new ConsultorioAsignado();
+            consultAsigDb.setInicioReserva(consultorioAsignadoRequestDto.getInicioReserva());
+            consultAsigDb.setFinReserva(consultorioAsignadoRequestDto.getFinReserva());
+            consultAsigDb.setConsultorio(new Consultorio(consultDto.getId(), consultDto.getCiudad(), consultDto.getDireccion(), consultDto.getNumero(), consultDto.getDescripcion()));
+            //consultAsigDb.setDoctor(doctor);
             //Optional <ConsultorioAsignado> consultAsigOpc=ConsultorioAsignadoRepository.findByidConsultorio(Long id);
-
-        } catch (Exception e) {
-            // TODO: handle exception
+        }catch(ConsultorioDoesntExistException ex){
+            throw new ConsultorioDoesntExistException("El consultorio ingresado no existe"+ ex);
+        }catch(DoctorDoesntExistExceptions ex){
+            throw new DoctorDoesntExistExceptions("El doctor ingresado no existe");
+        }catch (RuntimeException ex) {
+            throw new RuntimeException ("Error en create consultorio "+ex);
         }
     }
 
@@ -95,6 +119,18 @@ public class ConsultorioAsignadoServiceImpl implements ConsultorioAsignadoServic
         catch(RuntimeException ex){
             throw new UnsupportedOperationException("ERROR EN CONSULTORIO ASIGNADO'" + ex);
         }
+    }
+
+    @Override
+    public List<ConsultorioAsignadoResponseDto> findAllByBetweenAsignedDates(LocalDateTime fechaInicio,
+            LocalDateTime fechaFin) {
+                try{
+                    
+                    return null;
+                }catch(RuntimeException ex){
+        // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'findAllByBetweenAsignedDates'");
+                }
     }
     
 }
