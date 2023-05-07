@@ -2,7 +2,6 @@ package com.citasmedicas.citasmedicas.service.imp;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -36,13 +35,8 @@ public class ConsultorioServiceImpl implements ConsultorioService{
 
     @Override
     public void createConsultorio(ConsultorioDto consultorioDto) {
-        //validar si ya existe el consultorio 1 busca por direccion
-        //luego compara si ambos datos en todos sus registros son iguales.
-        //toca sobreescribir el comparator de la clase Consultorio
-        //List<Consultorio> consultorioByDireccion = consultorioRepository.findByDireccion(consultorioDto.getDireccion());
         List<Consultorio> consultorioByDireccion = consultorioRepository.findByCiudadAndDescripcionAndDireccionAndNumero
         (consultorioDto.getCiudad(), consultorioDto.getDescripcion(), consultorioDto.getDireccion(),consultorioDto.getNumero());
-
         Consultorio consultorioDb = new Consultorio();
         consultorioDb.setCiudad(consultorioDto.getCiudad());
         consultorioDb.setDireccion(consultorioDto.getDireccion());

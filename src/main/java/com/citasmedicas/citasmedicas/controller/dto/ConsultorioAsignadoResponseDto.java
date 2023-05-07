@@ -17,8 +17,29 @@ public class ConsultorioAsignadoResponseDto {
     private Long idConsultorioAsignado;
     private LocalDateTime inicioReserva;
     private LocalDateTime finReserva;
+
+    public ConsultorioAsignadoResponseDto(long idDoctor, String nombre, String apellido, String correo,
+            String nombreEspecialidad, Long idConsultorio, String ciudad, String direccion, Integer numero,
+            String descripcion, Long idConsultorioAsignado, LocalDateTime inicioReserva, LocalDateTime finReserva,
+            Long idCitaMedica) {
+        IdDoctor = idDoctor;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        NombreEspecialidad = nombreEspecialidad;
+        this.idConsultorio = idConsultorio;
+        this.ciudad = ciudad;
+        this.direccion = direccion;
+        this.numero = numero;
+        this.descripcion = descripcion;
+        this.idConsultorioAsignado = idConsultorioAsignado;
+        this.inicioReserva = inicioReserva;
+        this.finReserva = finReserva;
+    }
+    
     public ConsultorioAsignadoResponseDto() {
     }
+    
     public ConsultorioAsignadoResponseDto(long idDoctor, String nombre, String apellido, String correo,
             String nombreEspecialidad, Long idConsultorio, String ciudad, String direccion, Integer numero,
             String descripcion, Long idConsultorioAsignado, LocalDateTime inicioReserva, LocalDateTime finReserva) {
@@ -36,6 +57,7 @@ public class ConsultorioAsignadoResponseDto {
         this.inicioReserva = inicioReserva;
         this.finReserva = finReserva;
     }
+    
     public long getIdDoctor() {
         return IdDoctor;
     }
@@ -115,5 +137,4 @@ public class ConsultorioAsignadoResponseDto {
         this.finReserva = finReserva;
     }
 
-    
 }

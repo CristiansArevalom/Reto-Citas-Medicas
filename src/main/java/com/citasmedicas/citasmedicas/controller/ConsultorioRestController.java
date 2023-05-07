@@ -23,7 +23,7 @@ public class ConsultorioRestController {
         this.consultorioService = consultorioService;
     }
     
-    @GetMapping("api/Consultorios")
+    @GetMapping("api/consultorios")
     public List<ConsultorioDto> getConsultorios(){
         return consultorioService.getConsultorios();
     }

@@ -2,35 +2,27 @@ package com.citasmedicas.citasmedicas.controller.dto;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class ConsultorioAsignadoRequestDto {
     private Long id;
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm") //En el caso del DTO, estamos trabajando con datos que se van a enviar o recibir en formato JSON, por lo que la anotación @JsonFormat se utiliza para especificar el formato de fecha y hora en el JSON. 
     private LocalDateTime inicioReserva;
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     private LocalDateTime finReserva;
     private Long id_doctor;
-    private Long id_consultorio;
-    private Long id_citaMedica;
-    
+    private Long id_consultorio;    
     public ConsultorioAsignadoRequestDto() {
     }
 
-    public ConsultorioAsignadoRequestDto(Long id, LocalDateTime inicioReserva, LocalDateTime finReserva, Long id_doctor,
+    public ConsultorioAsignadoRequestDto( LocalDateTime inicioReserva, LocalDateTime finReserva, Long id_doctor,
             Long id_consultorio) {
-        this.id = id;
         this.inicioReserva = inicioReserva;
         this.finReserva = finReserva;
         this.id_doctor = id_doctor;
         this.id_consultorio = id_consultorio;
     }
 
-    public ConsultorioAsignadoRequestDto(Long id, LocalDateTime inicioReserva, LocalDateTime finReserva, Long id_doctor,
-            Long id_consultorio, Long id_citaMedica) {
-        this.id = id;
-        this.inicioReserva = inicioReserva;
-        this.finReserva = finReserva;
-        this.id_doctor = id_doctor;
-        this.id_consultorio = id_consultorio;
-        this.id_citaMedica = id_citaMedica;
-    }
 
     public Long getId() {
         return id;
@@ -45,6 +37,7 @@ public class ConsultorioAsignadoRequestDto {
     }
 
     public void setInicioReserva(LocalDateTime inicioReserva) {
+
         this.inicioReserva = inicioReserva;
     }
 
@@ -70,14 +63,6 @@ public class ConsultorioAsignadoRequestDto {
 
     public void setId_consultorio(Long id_consultorio) {
         this.id_consultorio = id_consultorio;
-    }
-
-    public Long getId_citaMedica() {
-        return id_citaMedica;
-    }
-
-    public void setId_citaMedica(Long id_citaMedica) {
-        this.id_citaMedica = id_citaMedica;
     }
 
     

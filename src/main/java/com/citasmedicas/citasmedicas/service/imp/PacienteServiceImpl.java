@@ -104,6 +104,22 @@ public class PacienteServiceImpl implements PacienteService {
         pacienteDb.getTelefono());
        return paciente;
     }
+
+
+    @Override
+    public PacienteResponseDto getPacienteByCedula(Integer cedula) {
+        Optional <Paciente> pacienteOp = pacienteRepository.findByCedula(cedula);
+        if(pacienteOp.isEmpty()){
+         throw new PacienteDoesntExistExceptions("El paciente no existe");
+        }
+        Paciente pacienteDb = pacienteOp.get();
+         PacienteResponseDto paciente = new PacienteResponseDto(pacienteDb.getId(),pacienteDb.getNombre(), 
+         pacienteDb.getApellido(), 
+         pacienteDb.getCedula(), 
+         pacienteDb.getEdad(),
+         pacienteDb.getTelefono());
+        return paciente;
+    }
     
     
 }

@@ -1,9 +1,7 @@
 package com.citasmedicas.citasmedicas.service.imp;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -42,7 +40,7 @@ public class EspecialidadesServiceImpl implements EspecialidadesService {
                 }
             }
         } catch (RuntimeException ex) {
-            throw new RuntimeException("Error al llenar especialdiades" + ex);
+            throw new RuntimeException("Error al llenar por defecto especialdiades" + ex);
         }
     }
 
@@ -53,7 +51,6 @@ public class EspecialidadesServiceImpl implements EspecialidadesService {
         try {
             List<Especialidad> especialidades = especialidadRepository.findAll();
             // llenando DTO
-
             return especialidades.stream().map(
                     especialidad -> new EspecialidadDto(
                             especialidad.getId(), especialidad.getNombre(), especialidad.getDescripcion()))
@@ -86,15 +83,12 @@ public class EspecialidadesServiceImpl implements EspecialidadesService {
         }
     }
 
-    
     @Override
     public EspecialidadDto getEspecialidadById(Long id) {
         Optional<Especialidad> especialidad = especialidadRepository.findById(id);
         if (especialidad.isEmpty()) {
             throw new EspecialidadDoesntExistExceptions("No existe la especialidad con ese ID");
         }
-        // Especialidad especialidades=especialidad.get(); Para aceder a los atributos
-        // de especialdiad
         return new EspecialidadDto(especialidad.get().getId(), especialidad.get().getNombre(),
                 especialidad.get().getDescripcion());
     }

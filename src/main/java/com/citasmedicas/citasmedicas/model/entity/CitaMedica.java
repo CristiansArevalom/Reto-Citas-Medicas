@@ -2,6 +2,8 @@ package com.citasmedicas.citasmedicas.model.entity;
 
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -26,83 +28,70 @@ public class CitaMedica {
     private Paciente paciente;
     @Column(nullable = false)
     private String especialidad;  //ESTABLECER LOGICA PARA QUE ESTO SE LLENDE DE LO QUE TRAIGA EL DOCTOR
+    @DateTimeFormat(pattern="dd-MM-yyyy HH:mm")
     @Column(nullable = false)
     private LocalDateTime fechaInicio;
     @Column(nullable = false)
+    @DateTimeFormat(pattern="dd-MM-yyyy HH:mm")
     private LocalDateTime fechaFin;
     @ManyToOne
-    @JoinColumn(name="id_consultorio",foreignKey = @ForeignKey(name="CITA_MED_ID_CONSULTORIO_FK"))
-    private Consultorio consultorio;
+    @JoinColumn(name="id_consultorios_asignados",foreignKey = @ForeignKey(name="CITAMEDICA_ID_CONSULT_ASIG_FK"))
+    private ConsultorioAsignado consultorioAsignado;
+    
 
     public CitaMedica() {
     }
-
-    public CitaMedica(Long id, Doctor doctor, Paciente paciente, String especialidad, LocalDateTime fechaInicio,
-            LocalDateTime fechaFin, Consultorio consultorio) {
-        this.id = id;
+    public CitaMedica(Doctor doctor, Paciente paciente, String especialidad, LocalDateTime fechaInicio,
+            LocalDateTime fechaFin,ConsultorioAsignado consultorioAsignado) {
         this.doctor = doctor;
         this.paciente = paciente;
         this.especialidad = especialidad;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.consultorio = consultorio;
-    }
+        this.consultorioAsignado=consultorioAsignado;
 
+    }
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public Doctor getDoctor() {
         return doctor;
     }
-
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
-
     public Paciente getPaciente() {
         return paciente;
     }
-
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
-
     public String getEspecialidad() {
         return especialidad;
     }
-
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
-
     public LocalDateTime getFechaInicio() {
         return fechaInicio;
     }
-
     public void setFechaInicio(LocalDateTime fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
-
     public LocalDateTime getFechaFin() {
         return fechaFin;
     }
-
     public void setFechaFin(LocalDateTime fechaFin) {
         this.fechaFin = fechaFin;
     }
-
-    public Consultorio getConsultorio() {
-        return consultorio;
+    public ConsultorioAsignado getConsultorioAsignado() {
+        return consultorioAsignado;
     }
-
-    public void setConsultorio(Consultorio consultorio) {
-        this.consultorio = consultorio;
+    public void setConsultorioAsignado(ConsultorioAsignado consultorioAsignado) {
+        this.consultorioAsignado = consultorioAsignado;
     }
-
     
 }

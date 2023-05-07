@@ -7,17 +7,13 @@ import com.citasmedicas.citasmedicas.controller.dto.ConsultorioAsignadoRequestDt
 import com.citasmedicas.citasmedicas.controller.dto.ConsultorioAsignadoResponseDto;
 
 public interface ConsultorioAsignadoService {
-    //ver consultorios asignados
     List<ConsultorioAsignadoResponseDto> getConsultoriosAsignados();
-    //crear consultorios asignados
-    void createConsultorioAsignado(ConsultorioAsignadoRequestDto consultorioAsignadoRequestDto);
-    //actualizar consultorios asignados
-    void updateConsultorioAsignado(ConsultorioAsignadoRequestDto consultorioAsignadoRequestDto);
-    //eliminar consultorios asignados
-    void deleteConsultorioAsignado(Long id);
-    //ver todos los detalles asignados de un consultorio
     ConsultorioAsignadoResponseDto getConsultorioAsignadoById(Long id);    
     List<ConsultorioAsignadoResponseDto> getConsultorioAsignadoByConsultorio(Long id);
-    List<ConsultorioAsignadoResponseDto> findAllByBetweenAsignedDates(LocalDateTime fechaInicio,LocalDateTime fechaFin); //ver como hacerlo
-
+    List<ConsultorioAsignadoResponseDto> getConsultorioAsignadoByEspecialidad(String especialidad);
+    List<ConsultorioAsignadoResponseDto> findAllByBetweenAsignedDates(LocalDateTime fechaInicio,LocalDateTime fechaFin);
+    void createConsultorioAsignado(ConsultorioAsignadoRequestDto consultorioAsignadoRequestDto);
+    void updateConsultorioAsignado(ConsultorioAsignadoRequestDto consultorioAsignadoRequestDto);
+    void deleteConsultorioAsignado(Long id);
+  //  List<ConsultorioAsignadoResponseDto> getConsultoriosAsignadosByEspecialidadAndAvailableByCitaDates(String especialidad, LocalDateTime fechaCitaInicio,LocalDateTime fechaCitaFin);
 }

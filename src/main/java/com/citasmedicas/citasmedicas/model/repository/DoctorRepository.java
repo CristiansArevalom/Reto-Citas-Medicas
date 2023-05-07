@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
 import com.citasmedicas.citasmedicas.model.entity.Doctor;
+import com.citasmedicas.citasmedicas.model.entity.Especialidad;
 
 
 public interface DoctorRepository extends JpaRepository<Doctor,Long> {
@@ -20,5 +20,7 @@ public interface DoctorRepository extends JpaRepository<Doctor,Long> {
    @Query("SELECT doc FROM Doctor doc INNER JOIN Especialidad esp ON doc.especialidad=esp")
     List<Doctor> findAllWithEspecialidad();
     
+    //@Query("SELECT doc FROM Doctor doc INNER JOIN Especialidad esp WHERE esp.nombre LIKE %:especialidad%")
+    List<Doctor> findAllByEspecialidad(Especialidad especialidad);
     //select  * from doctores d inner join especialidades es on d.id_especialidad = es.id;    
 }

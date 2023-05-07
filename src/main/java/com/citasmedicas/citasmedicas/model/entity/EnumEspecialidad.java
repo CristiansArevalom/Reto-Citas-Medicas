@@ -4,7 +4,7 @@ public enum EnumEspecialidad {
     MEDICINA_GENERAL("Medicina General"),
     CARDIOLOGIA("cardiologia"),
     MEDICINA_INTERNA("medicina interna"),
-    DETMATOLOGIA("Dermatologia"),
+    DERMATOLOGIA("Dermatologia"),
     REHABILITACION_FISICA("Rehabilitacion fisica"),
     PSICOLOGIA("psicologia"),
     ODONTOLOGIA("odontologia"),

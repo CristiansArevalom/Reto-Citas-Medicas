@@ -10,7 +10,6 @@ import com.citasmedicas.citasmedicas.model.entity.Especialidad;
 import com.citasmedicas.citasmedicas.model.entity.EnumEspecialidad;
 
 public interface EspecialidadRepository extends JpaRepository<Especialidad,Long>{
-        //solo podra buscar especialidades
     List<Especialidad> findAll();
     Optional <Especialidad> findByNombre(EnumEspecialidad nombre);
     
